@@ -121,11 +121,14 @@ function renderList() {
     box.setAttribute('aria-label', `Mark ${t.name} as earned`);
     box.addEventListener('change', (event) => {
       event.stopPropagation();
-      if (box.checked) earned.add(t.name); else earned.delete(t.name);
+      if (box.checked) { earned.add(t.name); li.classList.add('earned'); }
+      else { earned.delete(t.name); li.classList.remove('earned'); }
       saveEarned();
       renderProgress();
-      renderList();
       renderDetail(t);
+      // Only rebuild the list when a visibility filter depends on earned state,
+      // and do it after this click finishes so the checkbox is not replaced mid-click.
+      if (earnedOnlyEl.checked || hideEarnedEl.checked) setTimeout(renderList, 0);
     });
     const body = document.createElement('div');
     const name = document.createElement('div');
@@ -162,7 +165,10 @@ function renderList() {
     body.append(name, desc, meta);
     row.append(box, body);
     li.append(row);
-    li.addEventListener('click', () => { selectedId = t.id; renderList(); renderDetail(t); });
+    li.addEventListener('click', (e) => {
+      if (e.target === box) return; // the checkbox has its own handler; don't rebuild the list under it
+      selectedId = t.id; renderList(); renderDetail(t);
+    });
     listEl.append(li);
   }
   emptyMsg.hidden = shown > 0;
