@@ -3,23 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Nights — GTA VI Trophy Guide &amp; Tracker (all 55 trophies)</title>
+<meta name="description" content="Offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: cited guides, platinum roadmap, missable flags, saved checklist.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <h1>LEONIDA <span class="vice">NIGHTS</span> — GTA VI Trophy Guide &amp; Tracker</h1>
+  <p>Every one of the 55 PlayStation 5 trophies of Grand Theft Auto VI, with its official name, description and grade, a guide in our own words with its sources cited, a roadmap to the platinum, and a checklist that saves in your browser. Works fully offline — no network, no account, no Rockstar artwork.</p>
+  <div class="facts" id="facts"></div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="progressText">0 of 55 earned — 0%</div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+<main>
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" data-view="tracker" class="active">🏆 Tracker — all 55</button>
+    <button type="button" data-view="roadmap">🗺️ Roadmap to Platinum</button>
+    <button type="button" data-view="missables">⚠️ Missables</button>
+    <button type="button" data-view="sources">📚 Sources &amp; method</button>
+  </nav>
+
+  <section class="view active" id="view-tracker">
+    <div class="controls">
+      <input type="search" id="search" placeholder="Search a trophy by name or description…" aria-label="Search trophies">
+      <select id="grade" aria-label="Filter by grade">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+      <button type="button" id="export" class="primary">⬇ Export progress</button>
+      <label class="import-label">⬆ Import progress <input type="file" id="import" accept="application/json,.json" hidden></label>
+      <button type="button" id="reset">Reset</button>
+    </div>
+    <div class="chips" id="kindChips" aria-label="Filter by kind"></div>
+    <div class="toggles">
+      <label><input type="checkbox" id="spoiler"> 🙈 Spoiler mode — hide story trophy names &amp; descriptions until earned</label>
+      <label><input type="checkbox" id="earnedOnly"> ✅ Earned only</label>
+      <label><input type="checkbox" id="hideEarned"> Hide earned</label>
+    </div>
+    <div class="layout">
+      <div>
+        <ul class="trophies" id="list"></ul>
+        <p class="empty" id="emptyMsg" hidden>No trophies match these filters. Try another kind — or check the Online filter: GTA VI has <b>0 online trophies</b>, every trophy is single-player.</p>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite">
+        <h2>Pick a trophy</h2>
+        <p>Click any trophy in the list to open its full guide here — what to do, where and how, when it can be missed, and the sources each fact comes from.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="view roadmap" id="view-roadmap">
+    <h2>Roadmap to the platinum — about 200 hours, difficulty 4/10, one playthrough</h2>
+    <p>Built from the official trophy descriptions and PowerPyx's roadmap (55 offline trophies, 0 online, no difficulty settings, no mission gold medals, free-roam after the story, no mission replay, no New Game+). Keep a manual save at the start and end of each chapter — there are 15 manual save slots — because there is no mission replay. Cheats disable trophies and saving, so keep them off.</p>
+    <ol class="steps">
+      <li>
+        <h2>Step 1 — Finish the story (60–80 hours)</h2>
+        <p>Play the 5 chapters and enjoy the game. The 100% checklist is not viewable until after the story, but progress made during the story already counts. Take optional missions as they appear (you need any 100 of 200–300+ for 100%), scan new vehicles with the WAiNK app and study animals through binoculars as you go. <b>One warning:</b> in Chapter 1, do Lucia's balcony meditation at Jason's house — the only possibly missable trophy (see Missables).</p>
+        <table>
+          <tr><th>Stage</th><th>Trophies earned here</th></tr>
+          <tr><td>Chapter 1</td><td>Just Like Paradise, Paradise Lost, + the Chapter 1 meditation</td></tr>
+          <tr><td>Chapter 2</td><td>T**s Ass Drug Money, Trust, Coffee Break unlocks partner play</td></tr>
+          <tr><td>Chapter 3</td><td>Vice City, Baby!, Break the Bank, Key Cloner, jewelry jobs</td></tr>
+          <tr><td>Chapter 4</td><td>Top Of The World, Ma, Family Matters, DWNFALL, Hi-Jacked, bank vaults unlock</td></tr>
+          <tr><td>Chapter 5 / finale</td><td>Snow Storm, You Gotta Know When to Get Off (gold)</td></tr>
+        </table>
+      </li>
+      <li>
+        <h2>Step 2 — 100% Completion checklist (about 100 hours)</h2>
+        <p>After the credits, open Progress &gt; Stats &gt; 100% Completion (35 lines). It is lenient — closer to 60% true completion: scan any 200 of 277 base-model vehicles, study any 100 of 255 animals, complete any 100 optional missions, any 70 of 80 challenges, 300 stunts, all robberies, all 8 bank vaults, all 39 gang operations, all 15 Bret target decks, all shooting ranges and drone races. Most side quests are not required at all.</p>
+        <table>
+          <tr><th>Count trophy</th><th>Target</th></tr>
+          <tr><td>Cunning Stunts (silver)</td><td>250 of 397 stunts (300 for 100%)</td></tr>
+          <tr><td>The Shootist (silver)</td><td>Gold in all 42 Shooting Range challenges (12 ranges)</td></tr>
+          <tr><td>Top Fun</td><td>Win a drone race at all 14 locations (42 races)</td></tr>
+          <tr><td>One Last Thing</td><td>50 of 80 challenges (70 for 100%)</td></tr>
+          <tr><td>Whip It Good / You WAiNKer! (silver)</td><td>100 vehicles discovered / 100 WAiNK scans</td></tr>
+          <tr><td>Don't Touch My Deck (silver)</td><td>3 collectible card sets</td></tr>
+          <tr><td>Maximum Withdrawal (silver)</td><td>5 of 8 bank vaults (all 8 for 100%)</td></tr>
+          <tr><td>A Long Road (gold)</td><td>100% Completion — pops with the checklist</td></tr>
+        </table>
+      </li>
+      <li>
+        <h2>Step 3 — Strangers &amp; Freaks and cleanup (about 10 hours)</h2>
+        <p>Most trophies pop automatically during Step 2. Finish the 8 counting Strangers &amp; Freaks strands (Kirk, Kyle, Yago, Pilot Pete — see that trophy's guide), the final missions for Andy, Kenton, Billy, Randy and Tyrone, Bret's hunts, the money trophies (Dime on the Dollar, Treat Yo Self, Little Boxes, On the Spot) and the one-off stunts (Catch Me If You Can, Challenging Tank, Sneakthief, Capital Offense, In The Beginning…). The platinum, Vice Got a Price!, pops when the last one lands.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="view" id="view-missables">
+    <div class="missable-card">
+      <h2>⚠️ 1 potentially missable trophy</h2>
+      <p><b>Positive Mental Attitude</b> — “Meditate at every spot across Leonida.” There are 18 meditation spots across 10 locations. The first meditation happens in <b>Chapter 1</b> at Jason's house: after the main mission Down to Earth, talk to Lucia in the kitchen in the morning; she says she is going to meditate, walks to the balcony, and you follow her and choose Accept. That balcony meditation becomes permanently unavailable after Chapter 1, and PowerPyx reports it is still unconfirmed whether it is required for the trophy. <b>Do it in Chapter 1 to be safe.</b> The 100% checklist only needs 15 of 18 meditations, so the checklist is safe either way. Sources: PowerPyx trophy guide &amp; roadmap; HappyGamer's GTA 6 missables guide.</p>
+    </div>
+    <div class="safe-card">
+      <h2>Everything else is safe</h2>
+      <p>PowerPyx confirms there is <b>no mission replay</b>, but every other trophy-related quest giver returns after the story and all trophy content stays available in free-roam: Andy, Kenton, Billy, Randy, Tyrone and Bret questlines, Strangers &amp; Freaks, collectibles, activities, robberies and the whole 100% checklist. Optional missions that disappear (black icons with pink letters) do not matter for trophies — there are far more than the 100 needed. A few magazine collectibles sit in story buildings that become inaccessible, but they also spawn elsewhere and no trophy needs all of them. Time-sensitive hourglass quests can fail, but none is needed for a trophy. Keep a manual save at the start of each chapter anyway: it costs nothing and covers the one meditation above.</p>
+      <p><b>Cheats:</b> cheats disable trophies and saving — keep them off for the whole run (PowerPyx).</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-sources">
+    <h2>Sources &amp; method</h2>
+    <p><b>Official list:</b> the 55 names, descriptions and grades are as PlayStation publishes them, as listed by <b>PSNProfiles</b> and <b>Exophase</b> (the two trackers agree on every name, description and grade). 28 trophies are hidden on PlayStation until earned.</p>
+    <p><b>Guides:</b> every trophy's guide text is written in our own words for this entry. The facts behind each guide — where to go, how many, when it can be missed — come from the sources cited beside that trophy, chiefly <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx's GTA 6 Trophy Guide &amp; Roadmap</a> (roadmap times, counts, locations and the missable warning), cross-checked against <a href="https://sixshore.com/gta-6/guides/trophies-and-achievements/">Sixshore's trophy list</a>, <a href="https://www.planetgta6.com/en/gta-6-trophies/">PlanetGTA6's trophy list</a> and <a href="https://happygamer.com/gta-6-missables-176406/">HappyGamer's missables guide</a>. No guide text is copied: sources are cited, never copied. Where PowerPyx itself marks a trophy unconfirmed (Bad Luck, I Guess; Ten Pin), this guide says so instead of inventing a method.</p>
+    <p><b>Roadmap &amp; missables:</b> built from the official descriptions (story chapters and missions, collectible counts) plus PowerPyx's three-step roadmap and missable note.</p>
+    <p><b>Offline:</b> this app loads only its own files under app/ and makes no network request at run time. Source links open only if you click them. No Rockstar Games logo, official artwork, box art or game screenshot is used anywhere in the app.</p>
+  </section>
+</main>
+<footer>
+  <p>Leonida Nights is an unofficial fan-made guide. Grand Theft Auto, GTA and GTA VI are trademarks of Rockstar Games / Take-Two Interactive; this guide is not affiliated with or endorsed by them. Trophy names and descriptions are shown as PlayStation publishes them. Guide text is original; facts are cited to their sources. Built by an AI agent for make.fun's “Build the best GTA 6 trophy guide” bounty.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
